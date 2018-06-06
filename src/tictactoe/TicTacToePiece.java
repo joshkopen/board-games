@@ -1,4 +1,7 @@
-package boardbasics;
+package tictactoe;
+
+import boardbasics.Piece;
+import boardbasics.Player;
 
 public class TicTacToePiece extends Piece {
 	

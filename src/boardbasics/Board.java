@@ -16,7 +16,7 @@ public class Board {
 		squareGenerator(height, width);
 	}
 	
-	private void squareGenerator(int height, int width) {
+	protected void squareGenerator(int height, int width) {
 		for (int i = 0; i < height; i++) {
 			for (int j = 0; j < width; j++) {
 				squares[i][j] = new Square(i, j);

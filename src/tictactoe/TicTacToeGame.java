@@ -15,8 +15,6 @@ public class TicTacToeGame {
 	private int moveNum;
 	
 	private static final int TICTACTOESIZE = 3;
-	private static final int XMIDDLE = 1;
-	private static final int YMIDDLE = 1;
 	
 	public TicTacToeGame() {
 		gameTitle = "A friendly game between friends";
@@ -136,5 +134,9 @@ public class TicTacToeGame {
 	
 	public void printBoard() {
 		board.printBoard();
+	}
+	
+	public Board getBoard() {
+		return board;
 	}
 }

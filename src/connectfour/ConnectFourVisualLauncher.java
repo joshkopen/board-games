@@ -1,17 +1,20 @@
-package tictactoevisual;
+package connectfour;
+
 import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
-import javafx.application.Application;
 import javafx.stage.Stage;
 import javafx.util.Duration;
+import tictactoevisual.VisualRunner;
+import javafx.application.Application;
 
-public class TicTacToeVisualLauncher extends Application {
-	
-    private static final int FRAMES_PER_SECOND = 60;
+
+public class ConnectFourVisualLauncher extends Application{
+
+	private static final int FRAMES_PER_SECOND = 60;
     private static final int MILLISECOND_DELAY = 1000 / FRAMES_PER_SECOND;
     private static final double SECOND_DELAY = 1.0 / FRAMES_PER_SECOND;
     
-    private TicTacToeVisualRunner tttr;
+    private VisualRunner c4r;
     private Stage s;
 
 	public static void main(String[] args) {
@@ -20,8 +23,8 @@ public class TicTacToeVisualLauncher extends Application {
 	
 	public void start(Stage s) {
 		this.s = s;
-		tttr = new TicTacToeVisualRunner();
-		s.setScene(tttr.setupBoard());
+		c4r = new ConnectFourVisualRunner();
+		s.setScene(c4r.setupBoard());
 		
 		s.show();
         // attach "game loop" to timeline to play it
@@ -34,6 +37,6 @@ public class TicTacToeVisualLauncher extends Application {
 	}
 
 	public void step(double elapsedTime) {
-		tttr.runGameTwoPlayer(s);
+		c4r.runGameTwoPlayer(s);
 	}
 }

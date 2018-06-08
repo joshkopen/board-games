@@ -10,4 +10,5 @@ public interface ConnectFourGameAccess {
 	public boolean checkWin();
 	public boolean checkDraw();
 	public Board getBoard();
+	public int getMoveNum();
 }

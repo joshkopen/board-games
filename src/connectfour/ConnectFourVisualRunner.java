@@ -30,7 +30,7 @@ public class ConnectFourVisualRunner implements VisualRunner {
 	
 	private static final int HEIGHT = 300;
 	private static final int WIDTH = 300;
-	private static final Paint BACKGROUNDCOLOR = Color.WHITE;
+	private static final Paint BACKGROUNDCOLOR = Color.BLACK;
 	
 	private ConnectFourGameAccess cfg;
 	private Player player1;
@@ -48,7 +48,16 @@ public class ConnectFourVisualRunner implements VisualRunner {
 	
 	@Override
 	public void runGameTwoPlayer(Stage s) {
-		// TODO Auto-generated method stub
+		if (cfg.checkWin()) {
+			if (cfg.getMoveNum() % 2 == 1)
+				System.out.println("Player 1 won the game.");
+			else
+				System.out.println("Player 2 won the game.");
+			s.close();
+		} else if (cfg.checkDraw()) {
+			System.out.println("The game was drawn.");
+			s.close();
+		}
 		
 	}
 
@@ -96,17 +105,15 @@ public class ConnectFourVisualRunner implements VisualRunner {
 			
 				cfg.placePiece(r2s.get(r).getCoord().getX(), new ConnectFourPiece(currentPlayer, "visual"));
 				if (currentPlayer.equals(this.getPlayer1())) {
-					inputString = "images/X.png";
+					inputString = "images/redcircle.png";
 					currentPlayer = this.getPlayer2();
 				}
 				else {
-					inputString = "images/O.png";
+					inputString = "images/yellowcircle.jpg";
 					currentPlayer = this.getPlayer1();
 				}
 				Image image = new Image(new FileInputStream(inputString));
 				rectangleArray[r2s.get(r).getCoord().getX()][toPlace].setFill(new ImagePattern(image));
-				System.out.println(r2s.get(r).getCoord().getX());
-				System.out.println(r2s.get(r).getCoord().getY());
 				System.out.println();
 			}
 			

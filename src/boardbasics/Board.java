@@ -5,13 +5,13 @@ import java.util.Map;
 
 public class Board {
 	
-	private int height;
-	private int width;
+	private final int XMAX;
+	private final int YMAX;
 	private Square squares[][];
 	
 	public Board(int height, int width) {
-		this.height = height;
-		this.width = width;
+		this.XMAX = height;
+		this.YMAX = width;
 		squares = new Square[height][width];
 		squareGenerator(height, width);
 	}
@@ -38,8 +38,8 @@ public class Board {
 
 	
 	public void printBoard() {
-		for (int i = 0; i < width; i++) {
-			for (int j = 0; j < height; j++) {
+		for (int i = 0; i < YMAX; i++) {
+			for (int j = 0; j < XMAX; j++) {
 				if (squares[i][j].hasAPiece())
 					System.out.print(squares[i][j].getContent().getOwner().getNum());
 				else
@@ -53,5 +53,13 @@ public class Board {
 	
 	public Square getSquare(int x, int y) {
 		return squares[x][y];
+	}
+	
+	public int getYMax() {
+		return YMAX;
+	}
+	
+	public int getXMax() {
+		return XMAX;
 	}
 }

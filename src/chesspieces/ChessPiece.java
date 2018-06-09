@@ -8,6 +8,7 @@ import boardbasics.Coord;
 import boardbasics.Piece;
 import boardbasics.Player;
 import boardbasics.Square;
+import chess.ChessBoard;
 
 public abstract class ChessPiece extends Piece {
 
@@ -15,9 +16,9 @@ public abstract class ChessPiece extends Piece {
 		super(owner, value);
 	}
 
-	public abstract List<Square> getMoves(Board cb, Coord pos);
+	public abstract List<Square> getMoves(ChessBoard cb, Coord pos);
 	
-	protected List<Square> getMoves(Board cb, int [][] potentialMoves) {
+	protected List<Square> getMoves(ChessBoard cb, int [][] potentialMoves) {
 		List<Square> moves = new ArrayList<Square>();
 		for (int i = 0; i < potentialMoves.length; i++) {
 			if (cb.getSquare(potentialMoves[i][0], potentialMoves[i][1]) != null) {

@@ -7,6 +7,7 @@ import boardbasics.Board;
 import boardbasics.Coord;
 import boardbasics.Player;
 import boardbasics.Square;
+import chess.ChessBoard;
 
 public class Pawn extends ChessPieceFirstMove {
 
@@ -15,7 +16,7 @@ public class Pawn extends ChessPieceFirstMove {
 	}
 
 	@Override
-	public List<Square> getMoves(Board board, Coord pos) {
+	public List<Square> getMoves(ChessBoard board, Coord pos) {
 		List<Square> retList = new ArrayList<Square>();
 		retList = forwardMoves(retList, board, pos);
 		retList = captureMoves(retList, board, pos);

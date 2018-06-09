@@ -52,7 +52,11 @@ public class Board {
 	}
 	
 	public Square getSquare(int x, int y) {
-		return squares[x][y];
+		try {
+			return squares[x][y];
+		} catch (ArrayIndexOutOfBoundsException e) {
+			return null;
+		}
 	}
 	
 	public int getYMax() {

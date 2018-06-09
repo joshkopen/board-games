@@ -1,10 +1,11 @@
 package connectfour;
 
+import boardbasics.PlayType;
+import boardbasics.VisualRunner;
 import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
 import javafx.stage.Stage;
 import javafx.util.Duration;
-import tictactoevisual.VisualRunner;
 import javafx.application.Application;
 
 
@@ -15,15 +16,14 @@ public class ConnectFourVisualLauncher extends Application{
     private static final double SECOND_DELAY = 1.0 / FRAMES_PER_SECOND;
     
     private VisualRunner c4r;
-    private Stage s;
 
 	public static void main(String[] args) {
 		launch(args);
 	}
 	
+	//TODO: Add decision making for how many players
 	public void start(Stage s) {
-		this.s = s;
-		c4r = new ConnectFourVisualRunner();
+		c4r = new ConnectFourVisualRunner(s, PlayType.TwoPlayer);
 		s.setScene(c4r.setupBoard());
 		
 		s.show();
@@ -37,6 +37,6 @@ public class ConnectFourVisualLauncher extends Application{
 	}
 
 	public void step(double elapsedTime) {
-		c4r.runGameTwoPlayer(s);
+
 	}
 }

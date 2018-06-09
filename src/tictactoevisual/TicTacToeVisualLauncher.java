@@ -1,4 +1,5 @@
 package tictactoevisual;
+import boardbasics.PlayType;
 import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
 import javafx.application.Application;
@@ -12,15 +13,14 @@ public class TicTacToeVisualLauncher extends Application {
     private static final double SECOND_DELAY = 1.0 / FRAMES_PER_SECOND;
     
     private TicTacToeVisualRunner tttr;
-    private Stage s;
 
 	public static void main(String[] args) {
 		launch(args);
 	}
 	
+	//TODO: Add decision making for how many players
 	public void start(Stage s) {
-		this.s = s;
-		tttr = new TicTacToeVisualRunner();
+		tttr = new TicTacToeVisualRunner(s, PlayType.TwoPlayer);
 		s.setScene(tttr.setupBoard());
 		
 		s.show();
@@ -34,6 +34,6 @@ public class TicTacToeVisualLauncher extends Application {
 	}
 
 	public void step(double elapsedTime) {
-		tttr.runGameTwoPlayer(s);
+
 	}
 }

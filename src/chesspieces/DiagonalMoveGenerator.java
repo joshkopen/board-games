@@ -7,21 +7,23 @@ import boardbasics.Board;
 import boardbasics.Coord;
 import boardbasics.Player;
 import boardbasics.Square;
+import chess.ChessBoard;
+import chess.ChessSquare;
 
 public class DiagonalMoveGenerator implements MoveGenerator {
 
 	@Override
-	public List<Square> getMoves(Board board, Coord pos, Player owner) {
-		List<Square> moves = moveUpRight(board, pos, owner);
+	public List<ChessSquare> getMoves(ChessBoard board, Coord pos, Player owner) {
+		List<ChessSquare> moves = moveUpRight(board, pos, owner);
 		moves.addAll(moveUpLeft(board, pos, owner));
 		moves.addAll(moveDownRight(board, pos, owner));
 		moves.addAll(moveDownLeft(board, pos, owner));
 		return moves;
 	}
 	
-	private List<Square> moveUpRight(Board board, Coord pos, Player owner) {
+	private List<ChessSquare> moveUpRight(ChessBoard board, Coord pos, Player owner) {
 		int x = pos.getX(), y = pos.getY();
-		List<Square> moves = new ArrayList<Square>();
+		List<ChessSquare> moves = new ArrayList<ChessSquare>();
 		for (int i = x+1, j = y+1; i < 8 && j < 8; i++, j++) {
 			if (!board.getSquare(i, j).hasAPiece()) {
 				moves.add(board.getSquare(i, j));
@@ -35,9 +37,9 @@ public class DiagonalMoveGenerator implements MoveGenerator {
 		return moves;
 	}
 
-	private List<Square> moveUpLeft(Board board, Coord pos, Player owner) {
+	private List<ChessSquare> moveUpLeft(ChessBoard board, Coord pos, Player owner) {
 		int x = pos.getX(), y = pos.getY();
-		List<Square> moves = new ArrayList<Square>();
+		List<ChessSquare> moves = new ArrayList<ChessSquare>();
 		for (int i = x+1, j = y-1; i < 8 && j >= 0; i++, j--) {
 			if (!board.getSquare(i, j).hasAPiece()) {
 				moves.add(board.getSquare(i, j));
@@ -51,9 +53,9 @@ public class DiagonalMoveGenerator implements MoveGenerator {
 		return moves;
 	}
 
-	private List<Square> moveDownRight(Board board, Coord pos, Player owner) {
+	private List<ChessSquare> moveDownRight(ChessBoard board, Coord pos, Player owner) {
 		int x = pos.getX(), y = pos.getY();
-		List<Square> moves = new ArrayList<Square>();
+		List<ChessSquare> moves = new ArrayList<ChessSquare>();
 		for (int i = x-1, j = y+1; i >= 0 && j < 8; i--, j++) {
 			if (!board.getSquare(i, j).hasAPiece()) {
 				moves.add(board.getSquare(i, j));
@@ -67,9 +69,9 @@ public class DiagonalMoveGenerator implements MoveGenerator {
 		return moves;
 	}
 
-	private List<Square> moveDownLeft(Board board, Coord pos, Player owner) {
+	private List<ChessSquare> moveDownLeft(ChessBoard board, Coord pos, Player owner) {
 		int x = pos.getX(), y = pos.getY();
-		List<Square> moves = new ArrayList<Square>();
+		List<ChessSquare> moves = new ArrayList<ChessSquare>();
 		for (int i = x-1, j = y-1; i >= 0 && j >= 0; i--, j--) {
 			if (!board.getSquare(i, j).hasAPiece()) {
 				moves.add(board.getSquare(i, j));

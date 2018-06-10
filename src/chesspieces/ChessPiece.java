@@ -8,6 +8,8 @@ import boardbasics.Coord;
 import boardbasics.Piece;
 import boardbasics.Player;
 import boardbasics.Square;
+import chess.ChessBoard;
+import chess.ChessSquare;
 
 public abstract class ChessPiece extends Piece {
 
@@ -15,10 +17,15 @@ public abstract class ChessPiece extends Piece {
 		super(owner, value);
 	}
 
-	public abstract List<Square> getMoves(Board cb, Coord pos);
+	public abstract List<ChessSquare> getMoves(ChessBoard cb, Coord pos);
 	
-	protected List<Square> getMoves(Board cb, int [][] potentialMoves) {
-		List<Square> moves = new ArrayList<Square>();
+	/*
+	 * The method used by King and Knight because
+	 * move generators weren't applicable to them
+	 * like for the other non-pawn pieces
+	 */
+	protected List<ChessSquare> getMoves(ChessBoard cb, int [][] potentialMoves) {
+		List<ChessSquare> moves = new ArrayList<ChessSquare>();
 		for (int i = 0; i < potentialMoves.length; i++) {
 			if (cb.getSquare(potentialMoves[i][0], potentialMoves[i][1]) != null) {
 				if (!cb.getSquare(potentialMoves[i][0], potentialMoves[i][1]).hasAPiece()) {

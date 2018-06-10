@@ -66,4 +66,8 @@ public class Board {
 	public int getXMax() {
 		return XMAX;
 	}
+	
+	protected Square[][] getSquares() {
+		return squares;
+	}
 }

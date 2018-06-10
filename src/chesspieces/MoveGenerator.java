@@ -6,8 +6,10 @@ import boardbasics.Board;
 import boardbasics.Coord;
 import boardbasics.Player;
 import boardbasics.Square;
+import chess.ChessBoard;
+import chess.ChessSquare;
 
 public interface MoveGenerator {
 
-	public List<Square> getMoves(Board board, Coord pos, Player owner);
+	public List<ChessSquare> getMoves(ChessBoard board, Coord pos, Player owner);
 }

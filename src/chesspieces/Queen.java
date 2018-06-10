@@ -7,6 +7,7 @@ import boardbasics.Coord;
 import boardbasics.Player;
 import boardbasics.Square;
 import chess.ChessBoard;
+import chess.ChessSquare;
 
 public class Queen extends ChessPiece{
 
@@ -15,10 +16,10 @@ public class Queen extends ChessPiece{
 	}
 
 	@Override
-	public List<Square> getMoves(ChessBoard cb, Coord pos) {
+	public List<ChessSquare> getMoves(ChessBoard cb, Coord pos) {
 		MoveGenerator mg1 = new DiagonalMoveGenerator();
 		MoveGenerator mg2 = new StraightLineMoveGenerator();
-		List<Square> moves = mg1.getMoves(cb, pos, getOwner());
+		List<ChessSquare> moves = mg1.getMoves(cb, pos, getOwner());
 		moves.addAll(mg2.getMoves(cb, pos, getOwner()));
 		return moves;
 	}

@@ -8,6 +8,7 @@ import boardbasics.Coord;
 import boardbasics.Player;
 import boardbasics.Square;
 import chess.ChessBoard;
+import chess.ChessSquare;
 
 public class Pawn extends ChessPieceFirstMove {
 
@@ -16,15 +17,15 @@ public class Pawn extends ChessPieceFirstMove {
 	}
 
 	@Override
-	public List<Square> getMoves(ChessBoard board, Coord pos) {
-		List<Square> retList = new ArrayList<Square>();
+	public List<ChessSquare> getMoves(ChessBoard board, Coord pos) {
+		List<ChessSquare> retList = new ArrayList<ChessSquare>();
 		retList = forwardMoves(retList, board, pos);
 		retList = captureMoves(retList, board, pos);
 		isMoving();
 		return retList;
 	}
 
-	private List<Square> forwardMoves(List <Square> retList, Board board, Coord pos) {
+	private List<ChessSquare> forwardMoves(List <ChessSquare> retList, ChessBoard board, Coord pos) {
 		if (!board.getSquare(pos.getX(), pos.getY() + 1).hasAPiece()) {
 			retList.add(board.getSquare(pos.getX(), pos.getY() + 1));
 			if (!getHasMoved()) {
@@ -36,9 +37,9 @@ public class Pawn extends ChessPieceFirstMove {
 		return retList;
 	}
 	
-	private List<Square> captureMoves(List<Square> retList, Board board, Coord pos) {
+	private List<ChessSquare> captureMoves(List<ChessSquare> retList, ChessBoard board, Coord pos) {
 		if (pos.getX() < 7) {
-			Square toCapture = board.getSquare(pos.getX() + 1, pos.getY() + 1);
+			ChessSquare toCapture = board.getSquare(pos.getX() + 1, pos.getY() + 1);
 			if (toCapture.hasAPiece()) {
 				if (!toCapture.getContent().getOwner().equals(getOwner())) {
 					retList.add(toCapture);
@@ -46,7 +47,7 @@ public class Pawn extends ChessPieceFirstMove {
 			}
 		}
 		if (pos.getX() > 0) {
-			Square toCapture = board.getSquare(pos.getX() - 1, pos.getY() + 1);
+			ChessSquare toCapture = board.getSquare(pos.getX() - 1, pos.getY() + 1);
 			if (toCapture.hasAPiece()) {
 				if (!toCapture.getContent().getOwner().equals(getOwner())) {
 					retList.add(toCapture);

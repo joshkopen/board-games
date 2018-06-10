@@ -7,6 +7,7 @@ import boardbasics.Coord;
 import boardbasics.Player;
 import boardbasics.Square;
 import chess.ChessBoard;
+import chess.ChessSquare;
 
 public class Bishop extends ChessPiece {
 
@@ -15,7 +16,7 @@ public class Bishop extends ChessPiece {
 	}
 
 	@Override
-	public List<Square> getMoves(ChessBoard cb, Coord pos) {
+	public List<ChessSquare> getMoves(ChessBoard cb, Coord pos) {
 		MoveGenerator mg = new DiagonalMoveGenerator();
 		return mg.getMoves(cb, pos, getOwner());
 	}

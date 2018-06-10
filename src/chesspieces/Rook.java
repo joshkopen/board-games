@@ -7,6 +7,7 @@ import boardbasics.Coord;
 import boardbasics.Player;
 import boardbasics.Square;
 import chess.ChessBoard;
+import chess.ChessSquare;
 
 public class Rook extends ChessPieceFirstMove {
 
@@ -16,7 +17,7 @@ public class Rook extends ChessPieceFirstMove {
 	}
 
 	@Override
-	public List<Square> getMoves(ChessBoard cb, Coord pos) {
+	public List<ChessSquare> getMoves(ChessBoard cb, Coord pos) {
 		isMoving();
 		MoveGenerator mg = new StraightLineMoveGenerator();
 		return mg.getMoves(cb, pos, getOwner());

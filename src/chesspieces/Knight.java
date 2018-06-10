@@ -7,6 +7,7 @@ import boardbasics.Coord;
 import boardbasics.Player;
 import boardbasics.Square;
 import chess.ChessBoard;
+import chess.ChessSquare;
 
 public class Knight extends ChessPiece {
 
@@ -15,7 +16,7 @@ public class Knight extends ChessPiece {
 	}
 
 	@Override
-	public List<Square> getMoves(ChessBoard cb, Coord pos) {
+	public List<ChessSquare> getMoves(ChessBoard cb, Coord pos) {
 		int [][] moveArray = {{pos.getX()+2, pos.getY() + 1},
 				{pos.getX() + 2, pos.getY() -1},
 				{pos.getX() - 2, pos.getY() +1},

@@ -1,6 +1,7 @@
 package chess;
 
 import boardbasics.Board;
+import boardbasics.Square;
 
 /*The main point of this class is to add En Passant 
  * functionality. The current plan is to do this
@@ -18,4 +19,12 @@ public class ChessBoard extends Board{
 		super(height, width);
 	}
 
+	@Override
+	public ChessSquare getSquare(int x, int y) {
+		try {
+			return (ChessSquare) getSquares()[x][y];
+		} catch (ArrayIndexOutOfBoundsException e) {
+			return null;
+		}
+	}
 }
